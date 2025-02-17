@@ -1,18 +1,50 @@
 # **Status.md: ArXiv Scraper Project**
 
 ## **Current Status**
-- **Project Stage**: Not Started
-- **Programming**: Not yet begun
-- **Frontend**: Pending development
-- **Backend**: Pending development
-- **Deployment**: Pending setup
+- ✅ Initial project setup complete
+- ✅ Basic scraper structure implemented
+- ✅ ArXiv API integration complete
+- ⬜️ Frontend development
+- ⬜️ Backend API implementation
+- ⬜️ Testing and validation
+- ⬜️ Deployment setup
+
+## **Completed Tasks**
+- Created project structure and documentation
+- Implemented base PaperScraper class with error handling
+- Defined PaperMetadata data structure
+- Implemented ArXiv-specific scraper with:
+  - Paper search functionality
+  - Single paper retrieval by ID
+  - Rate limiting and error handling
+- Added required dependencies to requirements.txt
+
+## **In Progress**
+- Setting up FastAPI backend endpoints
+- Planning Streamlit frontend components
 
 ## **Next Steps**
-1. Set up the project repository and initial development environment.
-2. Start with the **backend** development (choose between FastAPI or Flask).
-3. Implement **API endpoints** to interact with the ArXiv API.
-4. Develop the **frontend** using Streamlit and integrate with the backend API.
-5. Test basic functionality and adjust accordingly.
+1. Implement FastAPI backend endpoints
+2. Create Streamlit frontend
+3. Add testing suite
+4. Set up deployment configuration
+5. Add additional features:
+   - PDF downloading
+   - Extended search parameters
+   - Caching layer
+
+## **Known Issues**
+- None reported yet
+
+## **Timeline**
+- Project Start: [Current Date]
+- Expected MVP: [Current Date + 2 weeks]
+
+## **Notes**
+- Project is following a stateless architecture as specified
+- Using Python with FastAPI for backend
+- Frontend will be implemented using Streamlit
+- ArXiv API integration includes rate limiting (3 seconds between requests)
 
 ## **Dependencies & Setup**
 - **Frontend**: Streamlit

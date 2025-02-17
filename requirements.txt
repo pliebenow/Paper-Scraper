@@ -1,2 +1,19 @@
-requests>=2.31.0
-beautifulsoup4>=4.12.0 
+# Core dependencies
+fastapi>=0.68.0
+uvicorn>=0.15.0
+streamlit>=1.2.0
+python-dotenv>=0.19.0
+
+# Scraping and API
+arxiv>=1.4.7
+beautifulsoup4>=4.9.3
+requests>=2.26.0
+
+# Type checking and development
+mypy>=0.910
+black>=21.7b0
+pytest>=6.2.5
+pytest-asyncio>=0.15.1
+
+# Logging and utilities
+logging>=0.5.1.2 
