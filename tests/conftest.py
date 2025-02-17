@@ -5,4 +5,4 @@ import logging
 def setup_logging():
     """Configure logging for tests"""
     logging.basicConfig(level=logging.INFO)
-    return logging.getLogger(__name__) 
+    return logging.getLogger(__name__)

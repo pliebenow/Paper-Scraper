@@ -46,7 +46,7 @@ class PaperScraper:
             PaperMetadata object if successful, None otherwise
         """
         try:
-            response = requests.get(url, headers=self.headers)
+            response = requests.get(url, headers=self.headers, timeout=30)
             response.raise_for_status()
 
             soup = BeautifulSoup(response.text, "html.parser")

@@ -17,7 +17,4 @@ pytest-mock>=3.6.1
 
 # Type checking and development
 mypy>=0.910
-black>=21.7b0
-
-# Logging and utilities
-logging>=0.5.1.2 
+black>=21.7b0 
