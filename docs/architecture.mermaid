@@ -1,0 +1,13 @@
+// [MermaidChart: 7240eabb-e1ab-4dcc-9b71-90e9d9aa95ef]
+graph TD
+  A[User] -->|Search Query| B["Frontend"]
+  B -->|API Request| C["Backend API"]
+  C -->|Fetch Papers| D[Scraper Service]
+  D -->|Retrieve Data| E["ArXiv API"]
+  C -->|Get Results| B
+
+
+  %% Stateless Frontend
+  style B fill:#bbf,stroke:#333,stroke-width:2px
+  style C fill:#f9f,stroke:#333,stroke-width:2px
+  style D fill:#ffb,stroke:#333,stroke-width:2px
