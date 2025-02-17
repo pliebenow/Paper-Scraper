@@ -17,6 +17,12 @@
   - Paper search functionality
   - Single paper retrieval by ID
   - Rate limiting and error handling
+  - Date range filtering support
+  - Advanced sorting capabilities:
+    - Date-based sorting using ArXiv API
+    - Author and title sorting
+    - Ascending/descending options
+    - Hybrid sorting approach (API + client-side)
 - Added comprehensive test suite:
   - Unit tests for ArXiv scraper
   - Async test support
@@ -24,11 +30,17 @@
   - Error case coverage
 - Implemented Streamlit frontend:
   - Search interface with customizable results
+  - Date range filtering (earliest to latest)
+  - Flexible sorting options:
+    - Sort by date, authors, or title
+    - Ascending/descending order control
   - Paper display with expandable sections
   - Direct links to ArXiv and PDFs
   - Responsive layout
   - Search tips and documentation
   - Loading states and error handling
+  - Input validation
+- Fixed async/sync implementation in ArXiv scraper
 - Updated project dependencies
 
 ## **In Progress**
@@ -42,14 +54,17 @@
    - PDF downloading
    - Extended search parameters
    - Caching layer
+   - Multiple criteria sorting
 4. Expand test coverage:
    - Integration tests
    - Performance tests
    - Mock tests for API calls
+   - Sorting functionality tests
 5. Frontend enhancements:
    - Advanced search filters
-   - Paper sorting options
    - Paper comparison features
+   - Date preset selections (last week, month, year)
+   - Additional sorting criteria
 
 ## **Known Issues**
 - None reported yet
@@ -64,7 +79,8 @@
 - Frontend implemented using Streamlit
 - ArXiv API integration includes rate limiting (3 seconds between requests)
 - Test suite uses pytest with async support
-- Frontend provides intuitive paper search and viewing experience
+- Frontend provides intuitive paper search with date filtering and sorting
+- Hybrid sorting approach optimizes performance by using ArXiv API when possible
 
 ## **Dependencies & Setup**
 - **Frontend**: Streamlit

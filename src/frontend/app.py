@@ -2,10 +2,11 @@
 
 import streamlit as st
 import asyncio
-from typing import Optional
+from typing import Optional, List
 import sys
 from pathlib import Path
 from datetime import datetime, timedelta
+from operator import attrgetter
 
 # Add the project root to Python path
 project_root = str(Path(__file__).parent.parent.parent)
@@ -13,6 +14,7 @@ if project_root not in sys.path:
     sys.path.append(project_root)
 
 from src.scraper.arxiv_scraper import ArxivScraper
+from src.scraper.paper_scraper import PaperMetadata
 
 # Initialize scraper
 scraper = ArxivScraper()
@@ -21,6 +23,23 @@ scraper = ArxivScraper()
 def run_async(coro):
     """Helper function to run async code in Streamlit"""
     return asyncio.run(coro)
+
+
+def sort_papers(papers: List[PaperMetadata], sort_by: str, ascending: bool) -> List[PaperMetadata]:
+    """Sort papers based on the selected criteria"""
+    if sort_by == "date":
+        return sorted(papers, 
+                     key=lambda x: datetime.strptime(x.publication_date, '%Y-%m-%d'),
+                     reverse=not ascending)
+    elif sort_by == "authors":
+        return sorted(papers, 
+                     key=lambda x: ', '.join(x.authors).lower(),
+                     reverse=not ascending)
+    elif sort_by == "title":
+        return sorted(papers,
+                     key=lambda x: x.title.lower(),
+                     reverse=not ascending)
+    return papers
 
 
 st.set_page_config(
@@ -70,6 +89,19 @@ with filter_col:
         max_value=50,
         value=10
     )
+    
+    # Sorting options
+    sort_by = st.selectbox(
+        "Sort by",
+        options=["date", "authors", "title"],
+        format_func=lambda x: x.capitalize()
+    )
+    
+    sort_order = st.radio(
+        "Sort order",
+        options=["Descending", "Ascending"],
+        horizontal=True
+    )
 
 # Validate date range
 if earliest_date > latest_date:
@@ -100,10 +132,17 @@ if st.button("🔍 Search Papers"):
                     if earliest_date <= datetime.strptime(paper.publication_date, '%Y-%m-%d').date() <= latest_date
                 ]
                 
-                st.success(f"Found {len(filtered_papers)} papers within the specified date range")
+                # Sort papers
+                sorted_papers = sort_papers(
+                    filtered_papers,
+                    sort_by,
+                    sort_order == "Ascending"
+                )
+                
+                st.success(f"Found {len(sorted_papers)} papers within the specified date range")
                 
                 # Display papers
-                for paper in filtered_papers:
+                for paper in sorted_papers:
                     with st.expander(f"📄 {paper.title}"):
                         # Paper metadata
                         st.markdown(f"**Authors:** {', '.join(paper.authors)}")
@@ -133,6 +172,7 @@ with st.sidebar:
     **Features:**
     - Real-time paper search
     - Date range filtering
+    - Sort by date, authors, or title
     - View paper abstracts
     - Download PDFs directly
     - Access original ArXiv pages 
@@ -145,6 +185,7 @@ with st.sidebar:
     - Combine terms with AND, OR: quantum AND computing
     - Use parentheses for grouping: (quantum OR classical) AND computing
     - Use date range to narrow down results
+    - Sort results by date, authors, or title
     """)
 
 # Footer
