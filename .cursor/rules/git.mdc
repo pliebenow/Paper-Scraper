@@ -1,0 +1,16 @@
+---
+description: git
+globs: 
+---
+
+# Your rule content
+
+- You can @ files here
+- You can use markdown but dont have to
+{
+  "ai": {
+    "auto_git_push": true,
+    "commit_message_style": "Descriptive",
+    "default_branch": "main"
+  }
+}
