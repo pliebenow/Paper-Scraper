@@ -77,10 +77,25 @@
   - ArXiv-specific behaviors
 
 ## **Dependencies & Setup**
+### Package Management
+- Using Poetry for dependency management
+- Virtual environment handled automatically by Poetry
+
+### Core Dependencies
 - **Frontend**: Streamlit
-- **Backend**: FastAPI or Flask
+- **Backend**: FastAPI
 - **Data Source**: ArXiv API
-- **Deployment**: Local development setup first, with potential for deployment to Heroku or AWS.
+- **Testing**: pytest with async support
+
+### Development Setup
+1. Install Poetry
+2. Run `poetry install`
+3. Activate environment with `poetry shell`
+4. Run tests with `poetry run pytest`
+
+### Deployment
+- Local development setup first
+- Potential deployment to Heroku or AWS
 
 ## **Challenges & Considerations**
 - Need to decide on the choice of **FastAPI** or **Flask** for the backend.

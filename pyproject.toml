@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "arxiv-scraper"
+version = "0.1.0"
+description = "ArXiv paper scraping and search application"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.68.0"
+uvicorn = "^0.15.0"
+streamlit = "^1.2.0"
+python-dotenv = "^0.19.0"
+arxiv = "^1.4.7"
+beautifulsoup4 = "^4.9.3"
+requests = "^2.26.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^6.2.5"
+pytest-asyncio = "^0.15.1"
+pytest-cov = "^2.12.0"
+pytest-mock = "^3.6.1"
+mypy = "^0.910"
+black = "^21.7b0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=src"
+
+[tool.black]
+line-length = 79
+target-version = ['py38']
+include = '\.pyw?$'
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true 
